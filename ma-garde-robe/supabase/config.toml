@@ -1,0 +1,8 @@
+[functions.photoroom]
+verify_jwt = true
+
+[functions.fashn]
+verify_jwt = true
+
+[functions.claim-data]
+verify_jwt = true
