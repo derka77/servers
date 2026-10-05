@@ -6,7 +6,7 @@ import WearLogModal from '../components/WearLogModal'
 import Mannequin from '../components/Mannequin'
 import type { Garment, Outfit, Profile, EventItem } from '../types'
 import type { Tab } from '../App'
-import type { Category } from '../types'
+import type { Category, GarmentStatus } from '../types'
 import colorData from '../lib/colorData.json'
 
 interface ColorDef { hue: number | null; value: string; saturation: string; temperature: string; category: string }
@@ -117,7 +117,7 @@ interface Props {
   onAdd: () => void
   onEditItem: (g: Garment) => void
   displayMode: 'simplified' | 'complete'
-  onFilterWardrobe?: (cat: Category, status: string) => void
+  onFilterWardrobe?: (cat: Category, status: GarmentStatus | 'all' | 'unavailable') => void
   onPrepareEventOutfit?: (event: EventItem) => void
 }
 

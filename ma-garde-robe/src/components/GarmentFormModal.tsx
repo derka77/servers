@@ -275,6 +275,14 @@ export default function GarmentFormModal({ garment, onClose, onSaved, displayMod
     return categoryItems.some((item) => localize(item, locale).toLowerCase() === form.name.toLowerCase())
   }, [form.name, categoryItems, locale])
 
+  // Suggestions de nom : les pièces de la catégorie courante qui contiennent le texte saisi
+  const filteredSuggestions = useMemo((): DictEntry[] => {
+    const q = form.name.trim().toLowerCase()
+    const sorted = sortDictionaryByLocale(categoryItems, locale)
+    const matches = q ? sorted.filter((item) => localize(item, locale).toLowerCase().includes(q)) : sorted
+    return matches.slice(0, 8)
+  }, [form.name, categoryItems, locale])
+
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center glass-overlay" {...overlayProps}>
       <div className="glass-sheet w-full max-w-lg max-h-[92vh] overflow-y-auto rounded-t-4xl sm:rounded-3xl animate-slide-up sm:animate-scale-in" onClick={(e) => e.stopPropagation()}>

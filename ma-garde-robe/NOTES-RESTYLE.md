@@ -23,8 +23,13 @@ Toutes les fonctionnalités sont conservées. Seule la présentation change.
 - `src/components/OutfitStudio.tsx`, `src/screens/Home.tsx` — la scène.
 - `index.html`, `tailwind.config.js` — polices.
 
+## Corrections TypeScript (après la refonte)
+`tsc --noEmit` passe désormais sans erreur. Corrections :
+- `lib/api.ts` : ré-export du type `WearLogEntry` (utilisé par `Stylist`, `WearLogModal`, `GarmentFormModal`).
+- `types.ts` : `NewGarment` ne rend plus obligatoires `wardrobe`, `is_demo`, `is_draft`.
+- `GarmentFormModal.tsx` : ajout de `filteredSuggestions` (suggestions de nom par catégorie, qui manquaient).
+- `BatchUploadModal.tsx`, `lib/demoWardrobe.ts` : champs manquants (`purchase_price`, attributs d'occasion) ajoutés.
+- `Home.tsx` : type exact du filtre de statut transmis à la Garde-robe.
+
 ## Connu / hors périmètre
-- 12 erreurs TypeScript préexistantes dans le zip d'origine (non bloquantes : `vite build` passe).
-  Principales : export manquant `WearLogEntry` dans `lib/api.ts`, variable `filteredSuggestions`
-  absente dans `GarmentFormModal.tsx`, types `NewGarment` incomplets.
-- Le fichier `.env` (clés Supabase) n'est volontairement pas inclus dans le dépôt.
+- Le fichier `.env` (clés Supabase) n'est pas dans le dépôt ; il est inclus dans le zip destiné à Bolt.

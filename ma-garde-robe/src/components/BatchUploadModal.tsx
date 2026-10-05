@@ -183,6 +183,7 @@ export default function BatchUploadModal({ onClose, onComplete }: Props) {
           pattern: 'solid',
           metallic: 'none',
           occasion_tags: [],
+          purchase_price: null,
         })
         updateDraft(draft.id, { garmentId: garment.id })
         created++

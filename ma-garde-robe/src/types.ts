@@ -120,7 +120,7 @@ export interface SizeHistoryEntry {
   changed_at: string
 }
 
-export type NewGarment = Omit<Garment, 'id' | 'created_at' | 'updated_at'> & { wardrobe?: 'personal' | 'demo'; is_demo?: boolean; is_draft?: boolean }
+export type NewGarment = Omit<Garment, 'id' | 'created_at' | 'updated_at' | 'wardrobe' | 'is_demo' | 'is_draft'> & { wardrobe?: 'personal' | 'demo'; is_demo?: boolean; is_draft?: boolean }
 export type GarmentUpdate = Partial<Omit<NewGarment, 'id' | 'created_at' | 'updated_at'>>
 
 export type WardrobeMode = 'personal' | 'demo'
